@@ -8,17 +8,17 @@ username="$(id -un)"
 echo "Installing the shell script..."
 mkdir -p ~/.backup.brotsky.com || fail "Failed to create bin directory"
 script=~/.backup.brotsky.com/tm-backup-and-eject.sh
-cat <<SCRIPTEOF > "$script"
+cat <<"SCRIPTEOF" > "$script"
 #!/bin/bash
 hostname="$(scutil --get ComputerName)"
 drive="$hostname backup"
 date
 if mount | grep "$drive" ; then
-	echo "Volume $drive mounted, starting backup..."
-	# eject after successful backup, stay mounted otherwise
-	tmutil startbackup -b && diskutil unmount "$drive"
+	echo "Volume '$drive' mounted, starting backup..."
+	tmutil startbackup -b
+	diskutil unmount "$drive"
 else
-	echo "Volume $drive not mounted, skipping backup."
+	echo "Volume '$drive' not mounted, skipping backup."
 fi
 SCRIPTEOF
 [[ -f "$script" ]] || fail "Failed to create script"
@@ -27,7 +27,7 @@ chmod a+x "$script"
 echo "Installing the launch agent..."
 plist=~/Library/LaunchAgents/com.brotsky.backup.plist
 [[ -f "$plist" ]] && launchctl unload "$plist"
-cat <<AGENTEOF > /tmp/agent.plist
+cat <<"AGENTEOF" > /tmp/agent.plist
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
