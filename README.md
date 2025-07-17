@@ -29,6 +29,12 @@ This will completely remove the launch agent, allowing you to connect/mount your
 
 This utility is a per-user launch agent, so each user on the same machine who wants to use it while they are logged in must install it themselves. I have no idea what will happen on a machine with multiple users who are logged in at the same time and who all have installed this utility. If you run into issues trying such a scenario, let me know via an issue in this repository and I will take a look.
 
+## Implementation Details
+
+The actual work of doing the backup and then ejecting the drive is done by a bash script installed in a hidden folder in the user’s home directory: `~/.backup.com.brotsky/tm-backup-and-eject.sh`.
+
+There is a launch agent `~/Library/LaunchAgents/com.brotsky.backup.plist` installed which runs every time a disk is mounted on your machine. If that disk is your backup disk, then it invokes the bash script above and writes its output to a log file `~/Library/Logs/com.brotsky.backup.stdout.log`. (There is also a `stderr.log` file, but since there usually is no error output that file is generally empty.)
+
 ## License
 
 This entire repository is available for use under the MIT License found in the [LICENSE](LICENSE) file. Bug reports and other contributions are always welcome. Have fun!
