@@ -1,14 +1,14 @@
-# Time Machine Backup
+# Easy Backup and Eject
 
 This is a utility that facilitates making disaster-recovery backups on macOS laptops. Even if you use a cloud-storage facility for your important documents, having a Time Machine backup that’s reasonably up-to-date is critical for macOS users because Time Machine is the only backup mechanism that does a good job of capturing all your preferences for the system and other apps, including things like window position (which some of us spend a lot of time getting “just the way we like it” :-).
 
 The problem with doing automatic Time Machine backups on a laptop is that it means you need to leave your backup drive mounted on your laptop at all times. This forces you, every time you want to move your laptop somewhere, to carefully eject your backup drive before disconnecting it. And doing this ejection can be difficult and time consuming, especially if your laptop has been sleeping or is in the middle of a backup.
 
-With this utility installed, and your Time Machine backups set to “Manual” rather than on a schedule, that problem goes away. Instead, you just plug your backup drive in to your laptop whenever it’s convenient to do so, and the utility will immediately do a Time Machine backup and then eject (aka unmount) the backup drive. You can then physically (and safely) disconnect the drive whenever (immediately after the backip completes or days later when you next move your laptop). I don’t know about you, but I move my laptop around a decent amount, so just plugging the drive back in whenever I get back to my desk ensures that I have a Time Machine backup that’s at most a few days old.
+With this utility installed, and your Time Machine backups set to “Manual” rather than on a schedule, that problem goes away. Instead, you just plug your backup drive into your laptop whenever it’s convenient to do so, and the utility will immediately do a Time Machine backup and then eject (aka unmount) the backup drive. You can then physically (and safely) disconnect the drive whenever (immediately after the backip completes or days later when you next move your laptop). I don’t know about you, but I move my laptop around a decent amount, so just plugging the drive back in whenever I get back to my desk ensures that I have a Time Machine backup that’s at most a few days old.
 
 ## Installation
 
-There are two ways to install or uninstall this utility. One of them is to use the this program on the Mac App Store. The other is to issue a command in the Mac Terminal. For installation, use this command:
+There are two ways to install or uninstall this utility. One of them is to [run this Application](https://www.brotsky.com/downloads/time-machine-backup/easy-backup-and-eject.dmg). The other is to issue a command in the Mac Terminal. For installation, use this command:
 
 ```bash
 curl https://www.brotsky.com/downloads/time-machine-backup/install.sh | /bin/bash
